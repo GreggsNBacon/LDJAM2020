@@ -29,7 +29,7 @@ namespace LudumDare.View
 
         private void LapUpdated(int lap)
         {
-
+            lapText.text = lap.ToString();
         }
 
         protected override void OnDestroy()

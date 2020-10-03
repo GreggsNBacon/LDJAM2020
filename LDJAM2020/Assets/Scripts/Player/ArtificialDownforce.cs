@@ -21,7 +21,7 @@ public class ArtificialDownforce : MonoBehaviour
     void Update()
     {
         Vector3 force = -downforce * rb.transform.up;
-        Debug.Log(force);
+        //Debug.Log(force);
         rb.AddForceAtPosition(force, downforcePos.position, ForceMode.Force);
     }
 }
