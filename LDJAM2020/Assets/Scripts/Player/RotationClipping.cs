@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 public class RotationClipping : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class RotationClipping : MonoBehaviour
         if(Physics.Raycast(ray, out var hit, 100, mask, QueryTriggerInteraction.Ignore))
         {
             desiredRot = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            //Debug.Log(transform.rotation.eulerAngles.magnitude / desiredRot.eulerAngles.magnitude);
+
+            //Debug.Log();
 
             desiredRot = Quaternion.Lerp(transform.rotation, desiredRot, 0.5f);
         }

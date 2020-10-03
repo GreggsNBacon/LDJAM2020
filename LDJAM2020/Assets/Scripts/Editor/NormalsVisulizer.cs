@@ -7,7 +7,7 @@ public class NormalsVisualizer : Editor
 
     private Mesh mesh;
 
-    void OnEnable()
+    private void OnEnable()
     {
         MeshFilter mf = target as MeshFilter;
         if (mf != null)
@@ -16,7 +16,7 @@ public class NormalsVisualizer : Editor
         }
     }
 
-    void OnSceneGUI()
+    private void OnSceneGUI()
     {
         if (mesh == null)
         {

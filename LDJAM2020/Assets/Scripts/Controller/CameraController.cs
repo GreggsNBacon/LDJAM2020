@@ -4,18 +4,18 @@ namespace LudumDare.Controller
 {
     public class CameraController : AbstractController
     {
-        [SerializeField] private Camera camera = null;
-        [SerializeField] private Vector3 positionOffset = Vector3.zero;
-        [SerializeField] private Transform carTransform = null;
+        [SerializeField]
+        private Transform target;
 
-        private void Update()
+        [SerializeField]
+        private float speed = 2.0f;
+
+        // Update is called once per frame
+        private void LateUpdate()
         {
-            transform.position = carTransform.position + positionOffset;
-            Quaternion newRot = Quaternion.RotateTowards(transform.rotation, carTransform.rotation, 1.0f * Time.deltaTime);
-
-            newRot = new Quaternion(transform.rotation.x, newRot.y, transform.rotation.z, 0.0f);
-
-            transform.rotation = newRot;
+            float dt = Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, target.position, dt * speed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, dt * speed);
         }
     }
 }
