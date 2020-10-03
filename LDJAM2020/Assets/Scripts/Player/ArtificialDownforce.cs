@@ -18,10 +18,10 @@ public class ArtificialDownforce : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Vector3 force = -downforce * rb.transform.up;
         Debug.Log(force);
-        rb.AddForceAtPosition(force, downforcePos.position);
+        rb.AddForceAtPosition(force, downforcePos.position, ForceMode.Force);
     }
 }
