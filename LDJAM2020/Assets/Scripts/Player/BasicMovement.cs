@@ -11,6 +11,9 @@ public class BasicMovement : MonoBehaviour
     private float maxBoost = 10.0f;
     [SerializeField]
     private float maxTurn = 10.0f;
+
+    [SerializeField]
+    private float rotSpeed = 10.0f;
     private float turning = 0.0f;
 
 
@@ -46,5 +49,6 @@ public class BasicMovement : MonoBehaviour
     public void Turn(float turn)
     {
         turning = turn;
+        transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, rotSpeed * turn * Time.deltaTime, 0));
     }
 }
