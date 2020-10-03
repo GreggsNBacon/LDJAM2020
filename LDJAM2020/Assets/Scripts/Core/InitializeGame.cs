@@ -2,7 +2,7 @@
 
 namespace LudumDare.Core
 {
-    public class InitialiseGame : MonoBehaviour
+    public class InitializeGame : MonoBehaviour
     {
         private void Awake()
         {

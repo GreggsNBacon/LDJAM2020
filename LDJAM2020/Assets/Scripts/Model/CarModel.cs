@@ -6,6 +6,6 @@ namespace LudumDare.Model
     {
         public float speed = 10.0f;
 
-        public event Action<int> speedUpdated;
+        public event Action<float> OnSpeedUpdated;
     }
 }

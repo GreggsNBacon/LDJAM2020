@@ -7,5 +7,9 @@ namespace LudumDare.View
         protected virtual void Start()
         {
         }
+
+        protected virtual void OnDestroy()
+        {
+        }
     }
 }
