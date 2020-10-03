@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private MainInput input;
 
     [SerializeField]
-    private CarBaseView car;
+    private BasicMovement car;
 
     private float steeringAngle = 0.0f;
     private float throttleInput = 0.0f;
@@ -45,13 +45,13 @@ public class PlayerController : MonoBehaviour
 
     void Throttle(float throttle)
     {
-        car.SetTorque(throttle);
+        car.Throttle(throttle);
         throttleInput = throttle;
     }
 
     void Steer(float steering)
     {
-        car.SetSteering(steering);
+        car.Turn(steering);
         steeringAngle = steering;
     }
 }
