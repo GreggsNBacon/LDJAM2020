@@ -21,6 +21,8 @@ public class BasicMovement : MonoBehaviour
         transform.position += transform.forward * (minSpeed * Time.deltaTime);
         transform.position += transform.forward * (boost * maxBoost * Time.deltaTime);
         transform.position += transform.right * (turning * Time.deltaTime);
+
+       // transform.position += transform.forward;
     }
 
     void UpdateThrottle()
