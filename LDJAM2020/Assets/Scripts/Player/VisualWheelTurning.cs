@@ -12,18 +12,18 @@ public class VisualWheelTurning : MonoBehaviour
     private void Start()
     {
         carModel = Models.GetModel<CarModel>();
+        carModel.OnTurningUpdated += TurningUpdated;
     }
-
-    private void LateUpdate()
+    private void OnDestroy()
     {
-        if (carModel != null)
+        carModel.OnTurningUpdated -= TurningUpdated;
+    }
+    private void TurningUpdated(float turning)
+    {
+        float angle = maxAngle * turning;
+        for (int i = 0; i < frontWheels.Length; i++)
         {
-            float turning = carModel.rotationSpeed;
-            float angle = maxAngle * turning;
-            for (int i = 0; i < frontWheels.Length; i++)
-            {
-                frontWheels[i].localRotation = Quaternion.Euler(0, angle, 0);
-            }
+            frontWheels[i].localRotation = Quaternion.Euler(0, angle, 0);
         }
     }
 }
