@@ -12,10 +12,16 @@ public class FOVSpeedController : MonoBehaviour
     private void Start()
     {
         carModel = Models.GetModel<CarModel>();
+        carModel.OnCurrentSpeedUpdated += OnCurrentSpeedUpdated;
     }
 
-    void LateUpdate()
+    void OnCurrentSpeedUpdated(float speed)
     {
-        fovController.SetCameraFOV(carModel.currentSpeed);
+        fovController.SetCameraFOV(speed);
+    }
+
+    private void OnDestroy()
+    {
+        carModel.OnCurrentSpeedUpdated -= OnCurrentSpeedUpdated;
     }
 }

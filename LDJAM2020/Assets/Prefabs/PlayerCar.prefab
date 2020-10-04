@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075535829}
   m_LocalRotation: {x: 0.0147474585, y: 0, z: 0, w: 0.9998913}
-  m_LocalPosition: {x: 0, y: 0.9, z: -0.89}
+  m_LocalPosition: {x: 0, y: 0.546, z: -0.593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1490487633767160047}
@@ -182,8 +182,8 @@ MonoBehaviour:
   maxSpeed: 14
   maxBoost: 10
   rotationSpeed: 200
-  fallSpeed: 2
-  minGroundDistance: 0.1
+  fallSpeed: 0.5
+  minGroundDistance: 0.2
 --- !u!114 &137187627
 MonoBehaviour:
   m_ObjectHideFlags: 0
