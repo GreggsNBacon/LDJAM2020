@@ -10,6 +10,11 @@ public class PlayerSettingUpdater : MonoBehaviour
 
     [SerializeField]
     private float speedIncrease = 1.0f;
+
+    [SerializeField]
+    private float increaseRate = 1.0f;
+
+    private float desiredSpeed = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +22,22 @@ public class PlayerSettingUpdater : MonoBehaviour
         carModel = Models.GetModel<CarModel>();
 
         gameModel.OnLapUpdated += LapUpdated;
+        desiredSpeed = carModel.minSpeed;
     }
 
     private void LapUpdated(int lap)
     {
         if(carModel.currentSpeed < carModel.maxSpeed)
         {
-            carModel.currentSpeed += speedIncrease;
+            desiredSpeed += speedIncrease;
+        }
+    }
+
+    private void Update()
+    {
+        if (carModel != null && carModel.currentSpeed < carModel.maxSpeed && carModel.currentSpeed < desiredSpeed )
+        {
+            carModel.currentSpeed += Time.deltaTime * increaseRate;
         }
     }
 

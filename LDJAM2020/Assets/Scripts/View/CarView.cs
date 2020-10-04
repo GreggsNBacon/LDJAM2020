@@ -68,8 +68,9 @@ namespace LudumDare.View
             interpolatedNormal = hitTransform.TransformDirection(interpolatedNormal);
 
             carTransform.rotation = Quaternion.FromToRotation(carTransform.up, interpolatedNormal) * carTransform.rotation;
-
+#if UNITY_EDITOR
             DrawDebugInfo(interpolatedNormal);
+#endif
         }
 
         private void UpdateForwardMovement(float dt)
