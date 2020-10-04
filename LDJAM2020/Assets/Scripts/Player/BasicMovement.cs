@@ -81,10 +81,14 @@ public class BasicMovement : MonoBehaviour
 
         if (turning != 0)
         {
-            transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y + turning * rotSpeed * Time.deltaTime, transform.rotation.z));
+            //transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y + turning * rotSpeed * Time.deltaTime, transform.rotation.z));
+            //Quaternion currentRot = transform.rotation;
+            Quaternion currentRot = transform.rotation * Quaternion.Euler(transform.rotation.x, transform.rotation.y + turning * rotSpeed * Time.deltaTime, transform.rotation.z);
+
+            transform.rotation = currentRot;
         }
 
-        transform.localPosition += transform.forward * (minSpeed * Time.deltaTime);
+        transform.position += transform.forward * (minSpeed * Time.deltaTime);
 
         //transform.localRotation = Quaternion.Euler(0.0f, (turning * Time.deltaTime), 0.0f) * transform.localRotation;
 
