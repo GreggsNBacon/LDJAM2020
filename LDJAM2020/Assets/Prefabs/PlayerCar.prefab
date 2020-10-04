@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 1447483053}
   - component: {fileID: 1447483055}
   m_Layer: 0
-  m_Name: RallyX_Car
+  m_Name: PlayerCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
+  carTransform: {fileID: 0}
 --- !u!114 &1776787570
 MonoBehaviour:
   m_ObjectHideFlags: 0
