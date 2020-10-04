@@ -1,19 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using LudumDare.Core;
+using LudumDare.Model;
 using UnityEngine;
 
 public class FOVSpeedController : MonoBehaviour
 {
+    [SerializeField] private FOVModification fovController;
 
-    [SerializeField]
-    private BasicMovement controller;
+    private CarModel carModel = null;
 
-    [SerializeField]
-    private FOVModification fovController;
+    private void Start()
+    {
+        carModel = Models.GetModel<CarModel>();
+    }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        fovController.SetCameraFOV(controller.GetSpeed());
+        fovController.SetCameraFOV(carModel.currentSpeed);
     }
 }

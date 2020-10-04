@@ -1,21 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using LudumDare.Model;
 using LudumDare.Core;
 
 public class VisualWheelTurning : MonoBehaviour
 {
-
-    [SerializeField]
-    private float maxAngle = 35.0f;
-    [SerializeField]
-    private Transform[] frontWheels;
+    [SerializeField] private float maxAngle = 35.0f;
+    [SerializeField] private Transform[] frontWheels;
 
     private CarModel carModel = null;
 
-
-    void Start()
+    private void Start()
     {
         carModel = Models.GetModel<CarModel>();
     }

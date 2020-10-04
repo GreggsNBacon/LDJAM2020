@@ -41,11 +41,11 @@ GameObject:
   - component: {fileID: 1490487633767160047}
   - component: {fileID: 8197893612475165942}
   - component: {fileID: 8568121287971032220}
-  - component: {fileID: 1776787570}
-  - component: {fileID: 1776787571}
   - component: {fileID: 1447483053}
   - component: {fileID: 1204742938}
-  - component: {fileID: 1204742940}
+  - component: {fileID: 1776787570}
+  - component: {fileID: 137187637}
+  - component: {fileID: 137187627}
   - component: {fileID: 1204742941}
   - component: {fileID: 1204742947}
   - component: {fileID: 1045056840}
@@ -124,41 +124,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1776787570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859531222599703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03b3d53d70c7ec4e83f48b479a12044, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 1776787571}
---- !u!114 &1776787571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859531222599703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5d9e5ba820f9d49988ee75e49b5861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 6
-  maxSpeed: 14
-  maxBoost: 10
-  maxTurn: 10
-  rotSpeed: 120
-  mask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  minDistance: 0.1
-  fallSpeed: 0.05
 --- !u!54 &1447483053
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,22 +154,52 @@ CapsuleCollider:
   m_Height: 0.93
   m_Direction: 2
   m_Center: {x: -0.0070757936, y: 0.1, z: 0.02}
---- !u!114 &1204742940
+--- !u!114 &1776787570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3859531222599703}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3634e493d0641824389bf8e49173c86a, type: 3}
+  m_Script: {fileID: 11500000, guid: f03b3d53d70c7ec4e83f48b479a12044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &137187637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859531222599703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e21702c8cb975d4f832479642cc42ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 5
+  maxSpeed: 14
+  maxBoost: 10
+  rotationSpeed: 200
+  fallSpeed: 2
+  minGroundDistance: 0.1
+--- !u!114 &137187627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859531222599703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99443aa7fbc36a64aad0f61991b27a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carTransform: {fileID: 1490487633767160047}
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
-  transforms: {fileID: 1490487633767160047}
 --- !u!114 &1204742941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df66dd15963af2d449d6150f2a362289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1776787571}
   fovController: {fileID: 0}
 --- !u!114 &1045056840
 MonoBehaviour:
