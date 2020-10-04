@@ -14,6 +14,6 @@ public class FOVSpeedController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        fovController.SetCameraFOV(0.5f);
+        fovController.SetCameraFOV(controller.GetSpeed());
     }
 }
