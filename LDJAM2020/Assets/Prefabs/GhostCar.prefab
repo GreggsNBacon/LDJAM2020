@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8568121287971032220}
   - component: {fileID: 1204742938}
   - component: {fileID: 7728749986165286369}
+  - component: {fileID: 2201750522998773372}
   m_Layer: 10
   m_Name: GhostCar
   m_TagString: Untagged
@@ -93,7 +94,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3859531222599703}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.15
   m_Height: 0.66
@@ -109,6 +110,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afc2af0d3d3470f4abd21626c35a2aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2201750522998773372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859531222599703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91103f5fa1522dd4baf89a9bbabb64c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &63885838295990405
