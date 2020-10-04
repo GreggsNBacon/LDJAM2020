@@ -17,7 +17,11 @@ public class FOVSpeedController : MonoBehaviour
 
     void OnCurrentSpeedUpdated(float speed)
     {
-        fovController.SetCameraFOV(speed);
+        
+        float totalSpeed = carModel.maxSpeed - carModel.minSpeed;
+        float actualSpeed = carModel.currentSpeed - carModel.minSpeed;
+        float percentage = actualSpeed / totalSpeed;
+        fovController.SetCameraFOV(percentage);
     }
 
     private void OnDestroy()
