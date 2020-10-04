@@ -10,6 +10,10 @@ namespace LudumDare.Model
         private float m_minSpeedDelta = 0.5f;
         private float m_maxBoost = 10.0f;
         private float m_rotationSpeed = 10.0f;
+        private float m_fallSpeed = 2.0f;
+        private float m_minGroundDistance = 0.1f;
+        private float m_turning = 0.0f;
+        private float m_throttle = 0.0f;
 
         public float currentSpeed
         {
@@ -82,5 +86,53 @@ namespace LudumDare.Model
             }
         }
         public event Action<float> OnRotationSpeedUpdated;
+
+        public float fallSpeed
+        {
+            get => m_fallSpeed;
+
+            set
+            {
+                m_fallSpeed = value;
+                OnFallSpeedUpdated?.Invoke(m_fallSpeed);
+            }
+        }
+        public event Action<float> OnFallSpeedUpdated;
+
+        public float minGroundDistance
+        {
+            get => m_minGroundDistance;
+
+            set
+            {
+                m_minGroundDistance = value;
+                OnMinGroundDistanceUpdated?.Invoke(m_minGroundDistance);
+            }
+        }
+        public event Action<float> OnMinGroundDistanceUpdated;
+
+        public float turning
+        {
+            get => m_turning;
+
+            set
+            {
+                m_turning = value;
+                OnTurningUpdated?.Invoke(m_turning);
+            }
+        }
+        public event Action<float> OnTurningUpdated;
+
+        public float throttle
+        {
+            get => m_turning;
+
+            set
+            {
+                m_turning = value;
+                OnThrottleUpdated?.Invoke(m_turning);
+            }
+        }
+        public event Action<float> OnThrottleUpdated;
     }
 }

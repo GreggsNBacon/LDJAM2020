@@ -55,6 +55,4 @@ namespace LudumDare.Model
 
         public event Action<Vector3> OnPositionUpdated;
     }
-
-        
 }

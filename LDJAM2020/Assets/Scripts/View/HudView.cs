@@ -8,7 +8,8 @@ namespace LudumDare.View
     public class HudView : AbstractView
     {
         [SerializeField] private TextMeshProUGUI lapText = null;
-        
+        [SerializeField] private TextMeshProUGUI speedText = null;
+
         private GameModel gameModel = null;
 
         protected override void Start()
