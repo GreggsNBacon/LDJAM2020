@@ -25,11 +25,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(steeringAngle != 0.0f && input.Car.Steering.ReadValue<float>() == 0.0f)
-        {
-            steeringAngle = 0.0f;
-            Steer(steeringAngle);
-        }
+        float value = input.Car.Steering.ReadValue<float>();
+        car.Turn(value);
+        //if(steeringAngle != 0.0f && input.Car.Steering.ReadValue<float>() == 0.0f)
+        //{
+        //    steeringAngle = 0.0f;
+        //    Steer(steeringAngle);
+        //}
 
         if (throttleInput != 0.0f && input.Car.CarThrottle.ReadValue<float>() == 0.0f)
         {
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void Steer(float steering)
     {
-        car.Turn(steering);
-        steeringAngle = steering;
+        //car.Turn(steering);
+        //steeringAngle = steering;
     }
 }

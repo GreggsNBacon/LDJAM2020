@@ -19,6 +19,12 @@ public class BasicMovement : MonoBehaviour
 
     [SerializeField] private LayerMask mask;
 
+    [SerializeField]
+    private float minDistance = 0.1f;
+
+    [SerializeField]
+    private float fallSpeed = 2.0f;
+
     Quaternion desiredRot = Quaternion.identity;
 
 
@@ -83,12 +89,16 @@ public class BasicMovement : MonoBehaviour
         {
             //transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y + turning * rotSpeed * Time.deltaTime, transform.rotation.z));
             //Quaternion currentRot = transform.rotation;
-            Quaternion currentRot = transform.rotation * Quaternion.Euler(transform.rotation.x, transform.rotation.y + turning * rotSpeed * Time.deltaTime, transform.rotation.z);
+            //Quaternion currentRot = transform.rotation * Quaternion.Euler(transform.rotation.x, transform.rotation.y + turning * rotSpeed * Time.deltaTime, transform.rotation.z);
 
-            transform.rotation = currentRot;
+            transform.rotation *= Quaternion.AngleAxis(turning* rotSpeed * Time.deltaTime, Vector3.up);
         }
 
         transform.position += transform.forward * (minSpeed * Time.deltaTime);
+        if(hit.distance >= minDistance)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, hit.point, fallSpeed * Time.deltaTime);
+        }
 
         //transform.localRotation = Quaternion.Euler(0.0f, (turning * Time.deltaTime), 0.0f) * transform.localRotation;
 
@@ -125,6 +135,6 @@ public class BasicMovement : MonoBehaviour
     public void Turn(float turn)
     {
         turning = turn;
-        transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, rotSpeed * turn * Time.deltaTime, 0));
+        //transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, rotSpeed * turn * Time.deltaTime, 0));
     }
 }
