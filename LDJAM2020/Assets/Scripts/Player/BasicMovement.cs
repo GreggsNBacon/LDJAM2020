@@ -38,6 +38,19 @@ public class BasicMovement : MonoBehaviour
 
         return actual / total;
     }
+
+    public void UpdateSpeed(float percentage)
+    {
+        float total = maxSpeed - minSpeed;
+        float newSpeed = total * percentage;
+        newSpeed += minSpeed;
+        speed = newSpeed;
+    }
+
+    private void Start()
+    {
+        speed = minSpeed;
+    }
     // Update is called once per frame
     void Update()
     {

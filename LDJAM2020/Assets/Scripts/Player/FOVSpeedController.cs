@@ -11,17 +11,9 @@ public class FOVSpeedController : MonoBehaviour
     [SerializeField]
     private FOVModification fovController;
 
-    [SerializeField]
-    private float maxSpeed = 15.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        fovController.SetCameraFOV(0.5f);
     }
 }
