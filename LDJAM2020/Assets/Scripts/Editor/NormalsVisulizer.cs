@@ -4,7 +4,6 @@ using UnityEngine;
 [CustomEditor(typeof(MeshFilter))]
 public class NormalsVisualizer : Editor
 {
-
     private Mesh mesh;
 
     private void OnEnable()
@@ -27,9 +26,7 @@ public class NormalsVisualizer : Editor
         //{
         //    Handles.matrix = (target as MeshFilter).transform.localToWorldMatrix;
         //    Handles.color = Color.yellow;
-        //    Handles.DrawLine(
-        //        mesh.vertices[i],
-        //        mesh.vertices[i] + mesh.normals[i]);
+        //    Handles.DrawLine(mesh.vertices[i], mesh.vertices[i] + mesh.normals[i]);
         //}
     }
 }
