@@ -6,7 +6,7 @@ public class FOVSpeedController : MonoBehaviour
 {
 
     [SerializeField]
-    private PlayerController controller;
+    private BasicMovement controller;
 
     [SerializeField]
     private FOVModification fovController;

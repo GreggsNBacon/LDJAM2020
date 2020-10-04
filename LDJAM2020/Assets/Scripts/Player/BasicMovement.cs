@@ -6,6 +6,10 @@ public class BasicMovement : MonoBehaviour
 {
     [SerializeField]
     private float minSpeed = 1.0f;
+    [SerializeField]
+    private float maxSpeed = 14.0f;
+
+    private float speed = 1.0f;
     private float boost = 1.0f;
     private float desiredValue = 0.0f;
     [SerializeField]
@@ -27,7 +31,13 @@ public class BasicMovement : MonoBehaviour
 
     Quaternion desiredRot = Quaternion.identity;
 
+    public float GetSpeed()
+    {
+        float total = maxSpeed - minSpeed;
+        float actual = maxSpeed - speed;
 
+        return actual / total;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -94,7 +104,7 @@ public class BasicMovement : MonoBehaviour
             transform.rotation *= Quaternion.AngleAxis(turning* rotSpeed * Time.deltaTime, Vector3.up);
         }
 
-        transform.position += transform.forward * (minSpeed * Time.deltaTime);
+        transform.position += transform.forward * (speed * Time.deltaTime);
         if(hit.distance >= minDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, hit.point, fallSpeed * Time.deltaTime);
