@@ -1,15 +1,15 @@
 ﻿using LudumDare.Core;
 using LudumDare.Model;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace LudumDare.View
 {
     public class HudView : AbstractView
     {
-        [SerializeField] private TextMeshProUGUI lapText = null;
-        [SerializeField] private TextMeshProUGUI speedText = null;
+        [SerializeField] private Text lapText = null;
+        [SerializeField] private Text speedText = null;
 
         [SerializeField] private float mphPerUnit = 40.0f;
 
@@ -49,7 +49,7 @@ namespace LudumDare.View
 
         private void CurrentSpeedUpdated(float speed)
         {
-            speedText.text = (speed * mphPerUnit) + " Mph";
+            speedText.text = (int)(speed * mphPerUnit) + " Mph";
         }
 
         protected override void OnDestroy()
