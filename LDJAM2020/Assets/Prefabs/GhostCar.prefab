@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8568121287971032220}
   - component: {fileID: 1204742938}
   - component: {fileID: 7728749986165286369}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GhostCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,10 +95,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.27
-  m_Height: 0.93
+  m_Radius: 0.15
+  m_Height: 0.66
   m_Direction: 2
-  m_Center: {x: -0.0070757936, y: 0.1, z: 0.02}
+  m_Center: {x: 0, y: 0, z: 0.02}
 --- !u!114 &7728749986165286369
 MonoBehaviour:
   m_ObjectHideFlags: 0

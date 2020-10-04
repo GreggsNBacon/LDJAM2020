@@ -18,8 +18,11 @@ namespace LudumDare.Controller
 
         private void OnTriggerEnter(Collider other)
         {
-            EventManager<Events>.TriggerEvent(Events.OnLap);
-            gameModel.lap++;
+            if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                EventManager<Events>.TriggerEvent(Events.OnLap);
+                gameModel.lap++;
+            }
         }
 
 

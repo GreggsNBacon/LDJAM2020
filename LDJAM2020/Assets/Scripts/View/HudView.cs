@@ -2,6 +2,7 @@
 using LudumDare.Model;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LudumDare.View
 {
@@ -11,6 +12,9 @@ namespace LudumDare.View
         [SerializeField] private TextMeshProUGUI speedText = null;
 
         [SerializeField] private float mphPerUnit = 40.0f;
+
+        [SerializeField]
+        private UnityEvent lapCompleteEvents;
 
         private GameModel gameModel = null;
         private CarModel carModel = null;
@@ -37,6 +41,10 @@ namespace LudumDare.View
         private void LapUpdated(int lap)
         {
             lapText.text = lap.ToString();
+            if (lap > 1)
+            {
+                lapCompleteEvents?.Invoke();
+            }
         }
 
         private void CurrentSpeedUpdated(float speed)
