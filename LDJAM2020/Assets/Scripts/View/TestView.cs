@@ -14,7 +14,7 @@ namespace LudumDare.View
 
             carModel = Models.GetModel<CarModel>();
 
-            Debug.Log("Speed = " + carModel.speed);
+            //Debug.Log("Speed = " + carModel.speed);
         }
     }
 }

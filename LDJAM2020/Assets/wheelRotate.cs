@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class wheelRotate : MonoBehaviour
 {
-    public GameObject frontWheelR;
-    public GameObject frontWheelL;
-
     [SerializeField]
     private float rotateSpeed = 100.0f;
 
