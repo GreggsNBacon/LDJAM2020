@@ -10,15 +10,20 @@ namespace LudumDare.View
         [SerializeField] private TextMeshProUGUI lapText = null;
         [SerializeField] private TextMeshProUGUI speedText = null;
 
+        [SerializeField] private float mphPerUnit = 40.0f;
+
         private GameModel gameModel = null;
+        private CarModel carModel = null;
 
         protected override void Start()
         {
             base.Start();
 
             gameModel = Models.GetModel<GameModel>();
+            carModel = Models.GetModel<CarModel>();
 
             gameModel.OnLapUpdated += LapUpdated;
+            carModel.OnCurrentSpeedUpdated += CurrentSpeedUpdated;
 
             RefreshAll();
         }
@@ -26,6 +31,7 @@ namespace LudumDare.View
         private void RefreshAll()
         {
             LapUpdated(gameModel.lap);
+            CurrentSpeedUpdated(carModel.currentSpeed);
         }
 
         private void LapUpdated(int lap)
@@ -33,9 +39,15 @@ namespace LudumDare.View
             lapText.text = lap.ToString();
         }
 
+        private void CurrentSpeedUpdated(float speed)
+        {
+            speedText.text = (speed * mphPerUnit) + " Mph";
+        }
+
         protected override void OnDestroy()
         {
             gameModel.OnLapUpdated -= LapUpdated;
+            carModel.OnCurrentSpeedUpdated -= CurrentSpeedUpdated;
         }
     }
 }
