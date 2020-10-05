@@ -6,6 +6,7 @@ namespace LudumDare.Core
     {
         private void Awake()
         {
+            Models.ClearModels();
             Models.InitialiseModels();
         }
     }
