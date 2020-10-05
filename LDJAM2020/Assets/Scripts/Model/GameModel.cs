@@ -54,5 +54,20 @@ namespace LudumDare.Model
         public event Action<int> OnLapUpdated;
 
         public event Action<Vector3> OnPositionUpdated;
+
+        private string m_level = "";
+
+        public string level
+        {
+            get => m_level;
+
+            set
+            {
+                m_level = value;
+                OnLevelUpdated?.Invoke(m_lap);
+            }
+        }
+
+        public event Action<int> OnLevelUpdated;
     }
 }

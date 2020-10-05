@@ -41,6 +41,14 @@ public class @MainInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""d83dc9db-79b0-4ed3-8785-edf403c58444"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -197,6 +205,28 @@ public class @MainInput : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""930291c1-1f5b-49b8-8a27-73c0e4893751"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""031c0891-2a5f-445c-9c16-feac37483554"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -231,6 +261,7 @@ public class @MainInput : IInputActionCollection, IDisposable
         m_Car_CarThrottle = m_Car.FindAction("CarThrottle", throwIfNotFound: true);
         m_Car_Steering = m_Car.FindAction("Steering", throwIfNotFound: true);
         m_Car_Jump = m_Car.FindAction("Jump", throwIfNotFound: true);
+        m_Car_Restart = m_Car.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -283,6 +314,7 @@ public class @MainInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Car_CarThrottle;
     private readonly InputAction m_Car_Steering;
     private readonly InputAction m_Car_Jump;
+    private readonly InputAction m_Car_Restart;
     public struct CarActions
     {
         private @MainInput m_Wrapper;
@@ -290,6 +322,7 @@ public class @MainInput : IInputActionCollection, IDisposable
         public InputAction @CarThrottle => m_Wrapper.m_Car_CarThrottle;
         public InputAction @Steering => m_Wrapper.m_Car_Steering;
         public InputAction @Jump => m_Wrapper.m_Car_Jump;
+        public InputAction @Restart => m_Wrapper.m_Car_Restart;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +341,9 @@ public class @MainInput : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_CarActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnJump;
+                @Restart.started -= m_Wrapper.m_CarActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_CarActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +357,9 @@ public class @MainInput : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -348,5 +387,6 @@ public class @MainInput : IInputActionCollection, IDisposable
         void OnCarThrottle(InputAction.CallbackContext context);
         void OnSteering(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
