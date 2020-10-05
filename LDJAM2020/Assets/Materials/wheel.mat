@@ -178,10 +178,10 @@ Material:
     m_Floats:
     - Vector1_535BCEB5: 0.3206376
     - Vector1_A2EF4909: 0.104756
-    - Vector1_C6FD568C: 2.16
+    - Vector1_C6FD568C: 1.51
     - Vector1_DBEDC6CB: 0.009
     - Vector1_F8D05209: 1
-    - Vector1_FB7C3835: 30
+    - Vector1_FB7C3835: 111
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
