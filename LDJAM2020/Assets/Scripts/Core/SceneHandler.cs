@@ -21,6 +21,7 @@ namespace LudumDare.Core
         private void LoadScenes()
         {
             SceneManager.LoadScene("HUDScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("MusicScene", LoadSceneMode.Additive);
         }
 
         private void OnDestroy()
