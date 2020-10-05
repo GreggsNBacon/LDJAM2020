@@ -6,13 +6,20 @@ namespace LudumDare.View
 {
     public class LevelColorView : AbstractView
     {
-        [SerializeField] private Material mat;
+        [System.Serializable]
+        private struct Mats
+        {
+            public Material mat;
+            public string shaderProperty;
+        }
+
+        [SerializeField] private Mats[] mats;
         [SerializeField] private Color[] emissiveColors;
+
+        private int[] shaderIds = null;
 
         private GameModel gameModel = null;
         private int currentColor = 0;
-
-        private static readonly int EmissionColor = Shader.PropertyToID("Color_354CDE3F");
 
         protected override void Start()
         {
@@ -22,12 +29,18 @@ namespace LudumDare.View
 
             gameModel.OnLapUpdated += OnLapUpdated;
 
+            GetShaderIds();
             ChangeEmissiveColor();
         }
 
-        protected override void OnDestroy()
+        private void GetShaderIds()
         {
-            gameModel.OnLapUpdated -= OnLapUpdated;
+            shaderIds = new int[mats.Length];
+
+            for (int i = 0; i < shaderIds.Length; ++i)
+            {
+                shaderIds[i] = Shader.PropertyToID(mats[i].shaderProperty);
+            }
         }
 
         private void OnLapUpdated(int lap)
@@ -37,7 +50,10 @@ namespace LudumDare.View
 
         private void ChangeEmissiveColor()
         {
-            mat.SetColor(EmissionColor, emissiveColors[currentColor]);
+            for (int i = 0; i < mats.Length; ++i)
+            {
+                mats[i].mat.SetColor(shaderIds[i], emissiveColors[currentColor]);
+            }
 
             currentColor++;
 
@@ -45,6 +61,11 @@ namespace LudumDare.View
             {
                 currentColor = 0;
             }
+        }
+
+        protected override void OnDestroy()
+        {
+            gameModel.OnLapUpdated -= OnLapUpdated;
         }
     }
 }
