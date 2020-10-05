@@ -16,6 +16,8 @@ public class EndLevelView : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI cloneCount;
+
+    private float mphPerUnit = 40.0f;
     private GameModel gameModel = null;
     private CarModel carModel = null;
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class EndLevelView : MonoBehaviour
     {
         gameModel = Models.GetModel<GameModel>();
         carModel = Models.GetModel<CarModel>();
+        mphPerUnit = carModel.mphPerUnit;
 
         UpdateLap();
         UpdateClones();
@@ -39,6 +42,7 @@ public class EndLevelView : MonoBehaviour
     }
     private void UpdateSpeed()
     {
-        speed.text = carModel.currentSpeed.ToString();
+        
+        speed.text = (int)(carModel.currentSpeed * mphPerUnit) + " Mph";
     }
 }

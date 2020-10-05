@@ -14,6 +14,7 @@ namespace LudumDare.Model
         private float m_minGroundDistance = 0.1f;
         private float m_turning = 0.0f;
         private float m_throttle = 0.0f;
+        private float m_mphPerUnit = 0.0f;
 
         public float currentSpeed
         {
@@ -26,6 +27,18 @@ namespace LudumDare.Model
             }
         }
         public event Action<float> OnCurrentSpeedUpdated;
+
+        public float mphPerUnit
+        {
+            get => m_mphPerUnit;
+
+            set
+            {
+                m_mphPerUnit = value;
+                OnMphPerUnitUpdated?.Invoke(m_mphPerUnit);
+            }
+        }
+        public event Action<float> OnMphPerUnitUpdated;
 
         public float maxSpeed
         {

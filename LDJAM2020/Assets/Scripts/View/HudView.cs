@@ -25,7 +25,7 @@ namespace LudumDare.View
 
             gameModel = Models.GetModel<GameModel>();
             carModel = Models.GetModel<CarModel>();
-
+            mphPerUnit = carModel.mphPerUnit;
             gameModel.OnLapUpdated += LapUpdated;
             carModel.OnCurrentSpeedUpdated += CurrentSpeedUpdated;
 

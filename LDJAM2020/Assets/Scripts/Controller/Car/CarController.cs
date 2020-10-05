@@ -12,6 +12,7 @@ namespace LudumDare.Controller.Car
         [SerializeField] private float rotationSpeed = 150.0f;
         [SerializeField] private float fallSpeed = 2.0f;
         [SerializeField] private float minGroundDistance = 0.1f;
+        [SerializeField] private float mphPerUnit = 40.0f;
 
         private CarModel carModel = null;
 
@@ -37,6 +38,7 @@ namespace LudumDare.Controller.Car
             carModel.minGroundDistance = minGroundDistance;
 
             carModel.currentSpeed = minSpeed;
+            carModel.mphPerUnit = mphPerUnit;
         }
 
 #if UNITY_EDITOR
