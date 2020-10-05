@@ -15,6 +15,7 @@ public class QuickRestart : MonoBehaviour
         model = Models.GetModel<GameModel>();
         input = new MainInput();
         input.Car.Restart.performed += x => Restart();
+        input.Car.Restart.Enable();
     }
 
     private void Restart()
