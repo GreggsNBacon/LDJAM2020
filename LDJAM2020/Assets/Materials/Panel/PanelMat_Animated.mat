@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: af5afcdffc5d7fd4b960359a9015a844,
     type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DOUBLESIDED_ON
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2450
@@ -163,7 +163,7 @@ Material:
     - Vector1_24E0F5BE: 1
     - Vector1_2EA15219: 450
     - Vector1_9A96B6A7: 0.74
-    - Vector1_C037B896: 8000
+    - Vector1_C037B896: 70
     - Vector1_CD7A8D18: 0
     - Vector1_D23EFFD7: 1
     - _AORemapMax: 1
