@@ -940,6 +940,8 @@ MonoBehaviour:
   normalMusicClips:
   - {fileID: 8300000, guid: 783d5642f8ffbc0479b02c55edb66e2a, type: 3}
   - {fileID: 8300000, guid: 3b4024f64a409cf46b48971bfb8b7439, type: 3}
+  - {fileID: 8300000, guid: 77248ebc4189a224eb48cbc10d981786, type: 3}
+  - {fileID: 8300000, guid: 862c404e3e4a94946a00a99bae441529, type: 3}
 --- !u!82 &1090795564
 AudioSource:
   m_ObjectHideFlags: 0

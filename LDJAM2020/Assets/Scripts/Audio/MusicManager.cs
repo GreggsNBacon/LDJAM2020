@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LudumDare.Core;
 using LudumDare.Model;
@@ -33,6 +31,7 @@ public class MusicManager : MonoBehaviour
     private AudioClip[] normalMusicClips;
 
     private int currentMusicIndex = 0;
+    private int previousMusicIndex = -1;
 
     private GameModel gameModel;
 
@@ -91,13 +90,20 @@ public class MusicManager : MonoBehaviour
 
     private void SetNormalMusic()
     {
-        if(normalMusicClips.Length >0 && currentMusicIndex < normalMusicClips.Length)
+        if(normalMusicClips.Length > 0 && currentMusicIndex < normalMusicClips.Length)
         {
+            do
+            {
+                currentMusicIndex = UnityEngine.Random.Range(0, normalMusicClips.Length - 1);
+            } 
+            while (currentMusicIndex == previousMusicIndex);
+
+            previousMusicIndex = currentMusicIndex;
+
             AudioClip newClip = normalMusicClips[currentMusicIndex];
             normalMusicCounter = newClip.length + 0.5f;
             normalSource.PlayOneShot(newClip);
             currentMainClip = newClip;
-            currentMusicIndex++;
         }
     }
 
