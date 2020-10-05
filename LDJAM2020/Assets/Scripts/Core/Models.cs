@@ -13,6 +13,9 @@ namespace LudumDare.Core
 
         public static void InitialiseModels()
         {
+            m_carModel = new CarModel();
+            m_gameModel = new GameModel();
+
             m_models.Add(typeof(CarModel), m_carModel);
             m_models.Add(typeof(GameModel), m_gameModel);
         }
