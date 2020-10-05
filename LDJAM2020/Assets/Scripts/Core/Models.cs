@@ -6,8 +6,8 @@ namespace LudumDare.Core
 {
     public static class Models
     {
-        private static CarModel m_carModel { get; set; } = new CarModel();
-        private static GameModel m_gameModel { get; set; } = new GameModel();
+        private static CarModel m_carModel { get; set; }
+        private static GameModel m_gameModel { get; set; }
 
         private static Dictionary<Type, object> m_models = new Dictionary<Type, object>();
 
