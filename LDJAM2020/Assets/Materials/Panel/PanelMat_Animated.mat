@@ -288,7 +288,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_354CDE3F: {r: 0.118725546, g: 0.16579555, b: 0.8679245, a: 1}
+    - Color_354CDE3F: {r: 0.26099145, g: 0.28549102, b: 0.6509434, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
