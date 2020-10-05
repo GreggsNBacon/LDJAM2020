@@ -16,6 +16,8 @@ public class MusicManager : MonoBehaviour
     }
     [SerializeField]
     private float timer = 4.0f;
+
+
     [SerializeField]
     ClipDetails[] clips;
 

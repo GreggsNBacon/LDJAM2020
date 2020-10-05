@@ -21,6 +21,9 @@ public class MusicClip : MonoBehaviour
 
     [SerializeField]
     private bool listenToVolume = false;
+    [SerializeField]
+    private float maxVolume = 0.6f;
+
     private float currentDelay = 0.0f;
     private float currentStopDelay = 0.0f;
 
@@ -28,6 +31,7 @@ public class MusicClip : MonoBehaviour
     private bool play = false;
 
     private bool fadeIn = false;
+    private bool fadeOut = false;
 
     private bool stop = false;
 
@@ -50,10 +54,10 @@ public class MusicClip : MonoBehaviour
             
             if (fadeIn)
             {
-                if (Source.volume <= 1.0f)
+                if (Source.volume <= maxVolume)
                 {
                     Source.volume += fadeSpeed * Time.deltaTime;
-                    Source.volume = Mathf.Clamp(Source.volume, 0, 1);
+                    Source.volume = Mathf.Clamp(Source.volume, 0, maxVolume);
                 }
                 else
                 {
@@ -67,8 +71,22 @@ public class MusicClip : MonoBehaviour
             currentStopDelay -= Time.deltaTime;
             if(currentStopDelay <= 0)
             {
-                stop = false;
-                Source.volume = 0;
+                fadeOut = true;
+                
+            }
+            if (fadeOut)
+            {
+                if (Source.volume >= 0.0f)
+                {
+                    Source.volume -= fadeSpeed * Time.deltaTime;
+                    Source.volume = Mathf.Clamp(Source.volume, 0, maxVolume);
+                }
+                else
+                {
+                    fadeOut = false;
+                    stop = false;
+                    Source.volume = 0;
+                }
             }
         }
     }

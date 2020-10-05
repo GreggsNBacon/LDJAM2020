@@ -171,6 +171,7 @@ MonoBehaviour:
   fadeSpeed: 1
   playOnce: 0
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!82 &143178376
 AudioSource:
   m_ObjectHideFlags: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   fadeSpeed: 1
   playOnce: 0
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!82 &223651902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -465,6 +467,7 @@ MonoBehaviour:
   fadeSpeed: 1
   playOnce: 1
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!82 &671057439
 AudioSource:
   m_ObjectHideFlags: 0
@@ -709,6 +712,7 @@ MonoBehaviour:
   fadeSpeed: 1
   playOnce: 0
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!1 &956951004
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +763,7 @@ MonoBehaviour:
   fadeSpeed: 30
   playOnce: 0
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!82 &956951007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1179,6 +1184,7 @@ MonoBehaviour:
   fadeSpeed: 1
   playOnce: 0
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!1 &1840234509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1235,7 @@ MonoBehaviour:
   fadeSpeed: 1
   playOnce: 0
   listenToVolume: 0
+  maxVolume: 0.4
 --- !u!82 &1840234512
 AudioSource:
   m_ObjectHideFlags: 0
