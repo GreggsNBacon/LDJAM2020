@@ -10,13 +10,13 @@ namespace LudumDare.Core
         private void Awake()
         {
             LoadScenes();
-            EventManager<Events>.RegisterEvent(Events.FailConditionMet, FailConditionMet);
+            //EventManager<Events>.RegisterEvent(Events.FailConditionMet, FailConditionMet);
         }
 
-        private void FailConditionMet(Events arg1, object[] arg2)
-        {
-            SceneManager.LoadScene("EndScene");
-        }
+        //private void FailConditionMet(Events arg1, object[] arg2)
+        //{
+        //    SceneManager.LoadScene("EndScene");
+        //}
 
         private void LoadScenes()
         {
@@ -24,9 +24,9 @@ namespace LudumDare.Core
             SceneManager.LoadScene("MusicScene", LoadSceneMode.Additive);
         }
 
-        private void OnDestroy()
-        {
-            EventManager<Events>.DeregisterEvent(Events.FailConditionMet, FailConditionMet);
-        }
+        //private void OnDestroy()
+        //{
+        //    EventManager<Events>.DeregisterEvent(Events.FailConditionMet, FailConditionMet);
+        //}
     }
 }
