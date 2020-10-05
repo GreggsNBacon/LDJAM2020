@@ -11,7 +11,7 @@ namespace LudumDare.Controller
 
         private AudioModel audioModel = null;
 
-        protected override void Start()
+        protected override void Awake()
         {
             audioModel = Models.GetModel<AudioModel>();
 

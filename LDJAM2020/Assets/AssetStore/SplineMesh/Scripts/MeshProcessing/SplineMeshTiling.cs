@@ -17,23 +17,30 @@ namespace SplineMesh {
         private Spline spline = null;
         private bool toUpdate = false;
 
-        [System.Serializable]
-        private struct Meshes
-        {
-            public Mesh mesh;
-            public Material material;
-        }
+        //[System.Serializable]
+        //private struct Meshes
+        //{
+        //    public Mesh mesh;
+        //    public Material material;
+        //}
 
         [System.Serializable]
         private struct MeshData
         {
-            public Meshes[] meshes;
-            public bool enableCollision;
-            public bool enableMeshRenderer;
-        }
-        [SerializeField] private MeshData[] meshData;
+            //public Meshes[] meshes;
+            [Header("Make this = number of splines - 1")]
+            public GameObject[] meshPrefabs;
 
-        [SerializeField] private int numOfGeneratedMeshes = 1;
+            //[Space]
+            //public bool enableCollision;
+            //public bool enableMeshRenderer;
+        }
+        [SerializeField] private MeshData meshData;
+
+        private MeshData[] meshDataInternal;
+
+        //force 2 meshes 1 for render data and 1 for collision
+        private int numOfGeneratedMeshes = 2;
 
         //[Tooltip("Material to apply on the bent dmesh.")]
         //public Material material;
@@ -73,14 +80,25 @@ namespace SplineMesh {
                 return;
             }
 
+            meshDataInternal = new MeshData[numOfGeneratedMeshes];
+
+            for (int i = 0; i < meshDataInternal.Length; ++i)
+            {
+                meshDataInternal[i].meshPrefabs = meshData.meshPrefabs;
+            }
+
             if (lockMeshData == false)
             {
-                meshData = new MeshData[numOfGeneratedMeshes];
 
-                for (int i = 0; i < meshData.Length; ++i)
-                {
-                    meshData[i].meshes = new Meshes[spline.curves.Count];
-                }
+                //for (int i = 0; i < meshData.Length; ++i)
+                //{
+                //    //MeshData = meshData[i].meshPrefabs.GetComponent<SplineMeshData>().renderMesh;
+
+
+                //    //meshData[i].meshes = new Meshes[spline.curves.Count];
+
+                //    //meshData[i].meshPrefabs = new Meshes[spline.curves.Count];
+                //}
             }
 
             generated = new GameObject[numOfGeneratedMeshes];
@@ -132,32 +150,61 @@ namespace SplineMesh {
                     int i = 0;
                     foreach (var curve in spline.curves)
                     {
+                        //j = mesh number, e.g. 0 = render mesh, 1 = collision
+                        //i = segment of mesh
+
                         Mesh mesh = null;
                         Material mat = null;
-                        if (meshData[j].meshes[i].mesh == null)
+                        if (j == 0)
                         {
-                            mesh = backupMesh;
-                            Debug.LogWarning("Can't find mesh - using backup");
+                            if (meshDataInternal[j].meshPrefabs[i].GetComponent<SplineMeshData>().renderMesh == null)
+                            {
+                                mesh = backupMesh;
+                                Debug.LogWarning("Can't find mesh - using backup");
+                            }
+                            else
+                            {
+                                mesh = meshDataInternal[j].meshPrefabs[i].GetComponent<SplineMeshData>().renderMesh;
+                            }
                         }
                         else
                         {
-                            mesh = meshData[j].meshes[i].mesh;
+                            if (meshDataInternal[j].meshPrefabs[i].GetComponent<SplineMeshData>().collisionMesh == null)
+                            {
+                                mesh = backupMesh;
+                                Debug.LogWarning("Can't find mesh - using backup");
+                            }
+                            else
+                            {
+                                mesh = meshDataInternal[j].meshPrefabs[i].GetComponent<SplineMeshData>().collisionMesh;
+                            }
                         }
 
-                        if (meshData[j].meshes[i].material == null)
+                        if (meshDataInternal[j].meshPrefabs[i].GetComponent<SplineMeshData>().material == null)
                         {
                             mat = backupMaterial;
                             Debug.LogWarning("Can't find material - using backup");
                         }
                         else
                         {
-                            mat = meshData[j].meshes[i].material;
+                            mat = meshDataInternal[j].meshPrefabs[i].GetComponent<SplineMeshData>().material;
                         }
 
                         var go = FindOrCreate("segment " + i++ + " mesh", mesh, mat, j);
                         go.GetComponent<MeshBender>().SetInterval(curve);
-                        go.GetComponent<MeshCollider>().enabled = meshData[j].enableCollision;
-                        go.GetComponent<MeshRenderer>().enabled = meshData[j].enableMeshRenderer;
+
+                        if (j == 0)
+                        {
+                            go.GetComponent<MeshCollider>().enabled = false;
+                            go.GetComponent<MeshRenderer>().enabled = true;
+                        }
+                        else
+                        {
+                            go.GetComponent<MeshCollider>().enabled = true;
+                            go.GetComponent<MeshRenderer>().enabled = false;
+                        }
+
+
                         used.Add(go);
                     }
                 }
@@ -165,8 +212,8 @@ namespace SplineMesh {
                 {
                     var go = FindOrCreate("segment 1 mesh", backupMesh, backupMaterial, j);
                     go.GetComponent<MeshBender>().SetInterval(spline, 0);
-                    go.GetComponent<MeshCollider>().enabled = meshData[j].enableCollision;
-                    go.GetComponent<MeshRenderer>().enabled = meshData[j].enableMeshRenderer;
+                    go.GetComponent<MeshCollider>().enabled = true;
+                    go.GetComponent<MeshRenderer>().enabled = true;
                     used.Add(go);
                 }
 

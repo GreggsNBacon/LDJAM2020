@@ -1,11 +1,14 @@
 ﻿using LudumDare.Core.EventManager;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FailConditionListener : MonoBehaviour
 {
+    [SerializeField] private float delaySecs = 3.0f;
+
+    private bool endGameStarted = false;
+    private float timer = 0.0f;
+    
     private void Awake()
     {
         EventManager<Events>.RegisterEvent(Events.FailConditionMet, FailConditionMet);
@@ -13,7 +16,20 @@ public class FailConditionListener : MonoBehaviour
 
     private void FailConditionMet(Events arg1, object[] arg2)
     {
-        SceneManager.LoadScene("EndScene");
+        endGameStarted = true;
+    }
+
+    private void Update()
+    {
+        if (endGameStarted == true)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= delaySecs)
+            {
+                SceneManager.LoadScene("EndScene");
+            }
+        }
     }
 
     private void OnDestroy()

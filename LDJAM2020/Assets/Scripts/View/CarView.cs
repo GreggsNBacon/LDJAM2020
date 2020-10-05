@@ -1,6 +1,8 @@
 ﻿using LudumDare.Core;
 using LudumDare.Model;
 using UnityEngine;
+using LudumDare.Core.EventManager;
+using UnityEngine.Rendering;
 
 namespace LudumDare.View
 {
@@ -9,16 +11,53 @@ namespace LudumDare.View
         [SerializeField] private Transform carTransform = null;
         [SerializeField] private LayerMask mask;
 
+        [SerializeField] private AudioSource engineAudioSource = null;
+        [SerializeField] private AudioSource soundsAudioSource = null;
+
+        private GameModel gameModel = null;
         private CarModel carModel = null;
+        private AudioModel audioModel = null;
         private RaycastHit hit = new RaycastHit();
+
+        private bool deathConditionMet = false;
+        private float timer = 0.0f;
 
         protected override void Start()
         {
             base.Start();
 
+            gameModel = Models.GetModel<GameModel>();
             carModel = Models.GetModel<CarModel>();
+            audioModel = Models.GetModel<AudioModel>();
 
+            gameModel.OnLapUpdated += PlayerForceFieldAudio;
             carModel.OnTurningUpdated += OnTurningUpdated;
+
+            PlayCarEngineAudio();
+
+            EventManager<Events>.RegisterEvent(Events.FailConditionMet, OnDeathConditionMet);
+        }
+
+        private void PlayCarEngineAudio()
+        {
+            engineAudioSource.clip = audioModel.GetSound("Shepard-tone");
+            engineAudioSource.Play();
+        }
+
+        private void PlayerForceFieldAudio(int lap)
+        {
+            soundsAudioSource.volume = 0.8f;
+            soundsAudioSource.PlayOneShot(audioModel.GetSound("NewLap"));
+        }
+
+        private void OnDeathConditionMet(Events eventName, object[] objects)
+        {
+            deathConditionMet = true;
+
+            engineAudioSource.Stop();
+
+            soundsAudioSource.volume = 0.6f;
+            soundsAudioSource.PlayOneShot(audioModel.GetSound("death"));
         }
 
         private void Update()
@@ -28,6 +67,18 @@ namespace LudumDare.View
             CalculateCarRotation();
             UpdateForwardMovement(dt);
             UpdateFalling(dt);
+
+            if (deathConditionMet == true)
+            {
+                LerpCarOnDeath(dt);
+            }
+        }
+
+        private void LerpCarOnDeath(float dt)
+        {
+            //Sort of a hack having this in this in the view script, but fuck it and the hard coded 3 seconds
+            timer += dt / 3.0f;
+            carModel.currentSpeed = Mathf.Lerp(carModel.currentSpeed, 0.0f, timer);
         }
 
         private void CalculateCarRotation()
@@ -98,7 +149,9 @@ namespace LudumDare.View
 
         protected override void OnDestroy()
         {
+            gameModel.OnLapUpdated -= PlayerForceFieldAudio;
             carModel.OnTurningUpdated -= OnTurningUpdated;
+            EventManager<Events>.DeregisterEvent(Events.FailConditionMet, OnDeathConditionMet);
         }
 
 #if UNITY_EDITOR

@@ -1,4 +1,6 @@
-﻿using LudumDare.Core;
+﻿using System;
+using LudumDare.Core;
+using LudumDare.Core.EventManager;
 using LudumDare.Model;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +21,8 @@ namespace LudumDare.View
         private GameModel gameModel = null;
         private CarModel carModel = null;
 
+        private bool deathConditionMet = false;
+
         protected override void Start()
         {
             base.Start();
@@ -30,6 +34,16 @@ namespace LudumDare.View
             carModel.OnCurrentSpeedUpdated += CurrentSpeedUpdated;
 
             RefreshAll();
+
+            EventManager<Events>.RegisterEvent(Events.FailConditionMet, OnDeathConditionMet);
+        }
+
+        private void Update()
+        {
+            if (deathConditionMet == true)
+            {
+                speedText.text = (int)(carModel.currentSpeed * mphPerUnit) + " Mph";
+            }
         }
 
         private void RefreshAll()
@@ -53,10 +67,17 @@ namespace LudumDare.View
             speedText.text = (int)(speed * mphPerUnit) + " Mph";
         }
 
+        private void OnDeathConditionMet(Events eventName, object[] objects)
+        {
+            deathConditionMet = true;
+        }
+
         protected override void OnDestroy()
         {
             gameModel.OnLapUpdated -= LapUpdated;
             carModel.OnCurrentSpeedUpdated -= CurrentSpeedUpdated;
+
+            EventManager<Events>.DeregisterEvent(Events.FailConditionMet, OnDeathConditionMet);
         }
     }
 }
