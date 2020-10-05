@@ -18,6 +18,9 @@ public class MusicClip : MonoBehaviour
 
     [SerializeField]
     private bool playOnce = false;
+
+    [SerializeField]
+    private bool listenToVolume = false;
     private float currentDelay = 0.0f;
     private float currentStopDelay = 0.0f;
 
@@ -27,6 +30,9 @@ public class MusicClip : MonoBehaviour
     private bool fadeIn = false;
 
     private bool stop = false;
+
+    public bool ListenToVolume { get => listenToVolume; set => listenToVolume = value; }
+    public AudioSource Source { get => source; set => source = value; }
 
     private void Update()
     {
@@ -44,10 +50,10 @@ public class MusicClip : MonoBehaviour
             
             if (fadeIn)
             {
-                if (source.volume <= 1.0f)
+                if (Source.volume <= 1.0f)
                 {
-                    source.volume += fadeSpeed * Time.deltaTime;
-                    source.volume = Mathf.Clamp(source.volume, 0, 1);
+                    Source.volume += fadeSpeed * Time.deltaTime;
+                    Source.volume = Mathf.Clamp(Source.volume, 0, 1);
                 }
                 else
                 {
@@ -62,7 +68,7 @@ public class MusicClip : MonoBehaviour
             if(currentStopDelay <= 0)
             {
                 stop = false;
-                source.volume = 0;
+                Source.volume = 0;
             }
         }
     }
@@ -71,7 +77,7 @@ public class MusicClip : MonoBehaviour
     {
         if (playOnce)
         {
-            source.Play();
+            Source.Play();
         }
         else
         {

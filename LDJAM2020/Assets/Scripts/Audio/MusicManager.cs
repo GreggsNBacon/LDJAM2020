@@ -19,12 +19,31 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     ClipDetails[] clips;
 
+    [Header("Normal Music")]
+
+    [SerializeField]
+    private int lapToSwitchToNormalMusic = 8;
+
+    [SerializeField]
+    private AudioSource normalSource = null;
+
+    [SerializeField]
+    private AudioClip[] normalMusicClips;
+
+    private int currentMusicIndex = 0;
+
     private GameModel gameModel;
+
+    private AudioClip currentMainClip;
 
     private bool lapComplete = true;
 
+    private bool normalMusic = false;
+
     private float currentTime;
     private int currentLap = 1;
+
+    private float normalMusicCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +60,42 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if(currentTime <= 0.0f)
+        if (!normalMusic)
         {
-            timer = currentTime;
-            if (lapComplete)
+            if (currentLap >= lapToSwitchToNormalMusic)
             {
-                lapComplete = false;
-                ProcessClips();
+                normalMusic = true;
             }
+            timer -= Time.deltaTime;
+            if (currentTime <= 0.0f)
+            {
+                timer = currentTime;
+                if (lapComplete)
+                {
+                    lapComplete = false;
+                    ProcessClips();
+                }
+            }
+        }
+        else
+        {
+            normalMusicCounter -= Time.deltaTime;
+            if(normalMusicCounter <= 0)
+            {
+                SetNormalMusic();
+            }
+        }
+    }
+
+    private void SetNormalMusic()
+    {
+        if(normalMusicClips.Length >0 && currentMusicIndex < normalMusicClips.Length)
+        {
+            AudioClip newClip = normalMusicClips[currentMusicIndex];
+            normalMusicCounter = newClip.length + 0.5f;
+            normalSource.PlayOneShot(newClip);
+            currentMainClip = newClip;
+            currentMusicIndex++;
         }
     }
 
@@ -61,16 +107,30 @@ public class MusicManager : MonoBehaviour
 
     private void ProcessClips()
     {
+
         for (int i = 0; i < clips.Length; i++)
         {
-            if(clips[i].maxLap != 0 && clips[i].maxLap <= currentLap)
+            if ((clips[i].maxLap != 0 && clips[i].maxLap <= currentLap) || currentLap >= lapToSwitchToNormalMusic)
             {
+                if (currentMainClip == clips[i].clip.Source.clip)
+                {
+                    currentMainClip = null;
+                }
                 clips[i].clip.Stop();
             }
-            else if(clips[i].minLap <= currentLap)
+            else if (clips[i].minLap <= currentLap)
             {
                 clips[i].clip.Play();
+                if (currentMainClip == null)
+                {
+                    currentMainClip = clips[i].clip.Source.clip;
+                }
+                else if (clips[i].clip.ListenToVolume)
+                {
+                    currentMainClip = clips[i].clip.Source.clip;
+                }
             }
         }
+
     }
 }
