@@ -155,6 +155,32 @@ Transform:
   m_Father: {fileID: 1490487633767160047}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &551455424999728649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091967360312118159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940d8bbf00953274bbdf4446dec2ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 100
+--- !u!114 &309401782309788037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560781953136278560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940d8bbf00953274bbdf4446dec2ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 100
 --- !u!1 &3740829647834188455
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +519,32 @@ Transform:
   m_Father: {fileID: 1490487633767160047}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8556738241524114615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793767373874101636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940d8bbf00953274bbdf4446dec2ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 100
+--- !u!114 &542346097665769148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444493202070865339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940d8bbf00953274bbdf4446dec2ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 100
 --- !u!1 &9021461707698652297
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +650,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d121517ee820294487251806365a26e, type: 3}
+--- !u!1 &1091967360312118159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d121517ee820294487251806365a26e,
+    type: 3}
+  m_PrefabInstance: {fileID: 280942086121109214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &318807982475956533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d121517ee820294487251806365a26e,
@@ -684,6 +742,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 795208483227959665}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &560781953136278560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d121517ee820294487251806365a26e,
+    type: 3}
+  m_PrefabInstance: {fileID: 795208483227959665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5640630812959457493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,6 +828,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5640630812959457493}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4793767373874101636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d121517ee820294487251806365a26e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5640630812959457493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8787002270633933034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -838,6 +908,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d121517ee820294487251806365a26e, type: 3}
+--- !u!1 &8444493202070865339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d121517ee820294487251806365a26e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8787002270633933034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9113893110212124417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d121517ee820294487251806365a26e,
