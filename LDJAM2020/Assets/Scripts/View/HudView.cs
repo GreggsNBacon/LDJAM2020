@@ -40,7 +40,8 @@ namespace LudumDare.View
 
         private void LapUpdated(int lap)
         {
-            lapText.text = lap.ToString();
+            lapText.text = "Lap: " + lap;
+
             if (lap > 1)
             {
                 lapCompleteEvents?.Invoke();
