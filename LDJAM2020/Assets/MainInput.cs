@@ -49,6 +49,14 @@ public class @MainInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""cdb9bb8e-bc8d-4e58-a807-7ef620e2de76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -227,6 +235,28 @@ public class @MainInput : IInputActionCollection, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4241674b-c306-4d7b-bede-5c440bbacae9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2fc702e-0666-4b2d-8602-a396cd8bcf17"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -262,6 +292,7 @@ public class @MainInput : IInputActionCollection, IDisposable
         m_Car_Steering = m_Car.FindAction("Steering", throwIfNotFound: true);
         m_Car_Jump = m_Car.FindAction("Jump", throwIfNotFound: true);
         m_Car_Restart = m_Car.FindAction("Restart", throwIfNotFound: true);
+        m_Car_Pause = m_Car.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +346,7 @@ public class @MainInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Car_Steering;
     private readonly InputAction m_Car_Jump;
     private readonly InputAction m_Car_Restart;
+    private readonly InputAction m_Car_Pause;
     public struct CarActions
     {
         private @MainInput m_Wrapper;
@@ -323,6 +355,7 @@ public class @MainInput : IInputActionCollection, IDisposable
         public InputAction @Steering => m_Wrapper.m_Car_Steering;
         public InputAction @Jump => m_Wrapper.m_Car_Jump;
         public InputAction @Restart => m_Wrapper.m_Car_Restart;
+        public InputAction @Pause => m_Wrapper.m_Car_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -344,6 +377,9 @@ public class @MainInput : IInputActionCollection, IDisposable
                 @Restart.started -= m_Wrapper.m_CarActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnRestart;
+                @Pause.started -= m_Wrapper.m_CarActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_CarActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_CarActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_CarActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +396,9 @@ public class @MainInput : IInputActionCollection, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -388,5 +427,6 @@ public class @MainInput : IInputActionCollection, IDisposable
         void OnSteering(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

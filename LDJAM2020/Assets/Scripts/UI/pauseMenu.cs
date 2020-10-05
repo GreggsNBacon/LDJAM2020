@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class pauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-    public GameObject pauseUI;
+    private  bool isPaused = false;
+    [SerializeField]
+    private GameObject pauseUI;
 
-    // Update is called once per frame
-    void Update()
+    private MainInput input;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        input = new MainInput();
+        input.Car.Pause.performed += x => HandlePause();
+        input.Car.Pause.Enable();
+        pauseUI.SetActive(false);
+    }
+
+    private void HandlePause()
+    {
+        if (isPaused)
         {
-            if (GameIsPaused = true)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            Resume();
+        }
+        else
+        {
+            Pause();
         }
     }
 
@@ -27,14 +34,14 @@ public class pauseMenu : MonoBehaviour
     {
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        isPaused = false;
     }
 
-    void Pause()
+    private void Pause()
     {
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        isPaused = true;
     }
 
     public void Quit()
