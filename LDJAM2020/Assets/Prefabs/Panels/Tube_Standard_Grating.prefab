@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6850834586999324263}
   - component: {fileID: 7669718314296179923}
   m_Layer: 0
-  m_Name: Tube_Standard_Prefab
+  m_Name: Tube_Standard_Grating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9520143b6fd371418dc05fe71d404c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderMesh: {fileID: 3636725482883900839, guid: a5999499d387f444ca00b32e69cc6599,
+  renderMesh: {fileID: 8998424625077301513, guid: 9b6721004ecc9b943b5c914a5f565c73,
     type: 3}
   collisionMesh: {fileID: 2646046986559549231, guid: 897cd56578e4a1b488694e301e3b8ca4,
     type: 3}
