@@ -13,6 +13,7 @@ public class FOVSpeedController : MonoBehaviour
     {
         carModel = Models.GetModel<CarModel>();
         carModel.OnCurrentSpeedUpdated += OnCurrentSpeedUpdated;
+        OnCurrentSpeedUpdated(carModel.currentSpeed);
     }
 
     void OnCurrentSpeedUpdated(float speed)
