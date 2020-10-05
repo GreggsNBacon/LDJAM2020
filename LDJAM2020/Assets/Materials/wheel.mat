@@ -21,8 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: wheel
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ShaderKeywords: _DISABLE_SSR _EMISSIVE_COLOR_MAP _MASKMAP _NORMALMAP_TANGENT_SPACE
+  m_Shader: {fileID: -6465566751694194690, guid: f42c5f69f31b293409991df2dd5f5604,
+    type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -38,6 +39,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_8C7E1CAD:
+        m_Texture: {fileID: 2800000, guid: 98d262135b896564fac350a9cc91d436, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B74E7354:
+        m_Texture: {fileID: 2800000, guid: c15c098440fd86140ad7dd6f22454474, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_CDF32745:
+        m_Texture: {fileID: 2800000, guid: 34e2532c9781493469c856955cce28d3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -163,6 +176,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_535BCEB5: 0.3206376
+    - Vector1_A2EF4909: 0.104756
+    - Vector1_C6FD568C: 2.16
+    - Vector1_DBEDC6CB: 0.009
+    - Vector1_F8D05209: 1
+    - Vector1_FB7C3835: 36255
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -244,8 +263,9 @@ Material:
     - _PPDMinSamples: 5
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
-    - _ReceivesSSR: 0
+    - _ReceivesSSR: 1
     - _RefractionModel: 0
+    - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _SPECULAR_ANISOTROPY: 0
     - _SPECULAR_IOR: 1.52
@@ -261,10 +281,10 @@ Material:
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 0
+    - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 2
-    - _StencilRefMV: 32
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
@@ -295,6 +315,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
+    - Color_8BA099A2: {r: 0.13788696, g: 1, b: 0.13679248, a: 0}
     - _BASE_COLOR: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
