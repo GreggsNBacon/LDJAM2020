@@ -15,12 +15,7 @@ namespace LudumDare.Model
         private float m_turning = 0.0f;
         private float m_throttle = 0.0f;
         private float m_mphPerUnit = 0.0f;
-        private float m_maxAchievedSpeed = 0.0f;
 
-        public float maxAchievedSpeed
-        {
-            get => m_maxAchievedSpeed;
-        }
         public float currentSpeed
         {
             get => m_currentSpeed;
@@ -28,10 +23,6 @@ namespace LudumDare.Model
             set
             {
                 m_currentSpeed = value;
-                if(m_currentSpeed >= m_maxAchievedSpeed)
-                {
-                    m_maxAchievedSpeed = m_currentSpeed;
-                }
                 OnCurrentSpeedUpdated?.Invoke(m_currentSpeed);
             }
         }
