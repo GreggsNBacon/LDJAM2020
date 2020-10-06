@@ -43,6 +43,6 @@ public class EndLevelView : MonoBehaviour
     private void UpdateSpeed()
     {
         
-        speed.text = (int)(carModel.currentSpeed * mphPerUnit) + " Mph";
+        speed.text = (int)(carModel.maxAchievedSpeed * mphPerUnit) + " Mph";
     }
 }
